@@ -18,14 +18,15 @@ from label_studio_ml.utils import (
 LABEL_STUDIO_HOST = os.environ.get("LABEL_STUDIO_HOST")
 LABEL_STUDIO_ACCESS_TOKEN = os.environ.get("LABEL_STUDIO_ACCESS_TOKEN")
 
-DEVICE = "cuda"
+DEVICE = "cpu"
+# DEVICE = "cuda"
 
 
 class YoloModel(LabelStudioMLBase):
     def __init__(self, project_id, **kwargs):
         super().__init__(**kwargs)
         self.yolo_detector = YOLO("/models/best_v3.pt")
-        self.sam_detector = SAM("/models/sam_b.pt")
+        self.sam_detector = SAM("models\segment_anything\sam_b.pt")
 
         self.yolo_detector.to(DEVICE)
         self.sam_detector.to(DEVICE)
