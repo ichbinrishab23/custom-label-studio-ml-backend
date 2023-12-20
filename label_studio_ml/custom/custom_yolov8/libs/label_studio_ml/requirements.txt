@@ -1,0 +1,4 @@
+Flask~=2.3
+colorama~=0.4
+requests~=2.31
+label-studio-tools
