@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  ml-backend:
+    container_name: ml_yolov8
+    image: label_studio_ml_yolov8
+    build: .
+    environment:
+      - MODEL_DIR=/models
+      - WORKERS=2
+      - THREADS=4
+      - LOG_LEVEL=DEBUG
+      - ANY=PARAMETER
+      - LABEL_STUDIO_HOST=http://172.31.100.25:8081
+      - LABEL_STUDIO_ACCESS_TOKEN=813739aa199783c17cb06ede6af59d901fcf1a65
+    ports:
+      - "9090:9090"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
