@@ -25,8 +25,8 @@ DEVICE = "cpu"
 class YoloModel(LabelStudioMLBase):
     def __init__(self, project_id, **kwargs):
         super().__init__(**kwargs)
-        self.yolo_detector = YOLO("/models/best_v3.pt")
-        self.sam_detector = SAM("models\segment_anything\sam_b.pt")
+        self.yolo_detector = YOLO("D:\\computer_vision\\github\\custom-label-studio-ml-backend\\label_studio_ml\\custom\\custom_yolov8\\models\\best_v3.pt")
+        self.sam_detector = SAM("D:\computer_vision\models\segment_anything\sam_b.pt")
 
         self.yolo_detector.to(DEVICE)
         self.sam_detector.to(DEVICE)
