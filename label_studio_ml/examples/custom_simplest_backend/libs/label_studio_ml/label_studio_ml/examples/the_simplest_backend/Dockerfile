@@ -10,10 +10,7 @@ COPY requirements.txt .
 ENV PYTHONUNBUFFERED=True \
     PORT=${PORT:-9090}
 
-RUN pip install --upgrade pip
-RUN git config --global http.sslverify "false"
 RUN pip install -r requirements.txt
-# RUN pip install git+https://github.com/heartexlabs/label-studio-ml-backend.git
 
 WORKDIR /app
 

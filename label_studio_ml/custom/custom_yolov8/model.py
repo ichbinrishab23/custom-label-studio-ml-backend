@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Dict, List, Optional
 from uuid import uuid4
 
@@ -25,8 +26,16 @@ DEVICE = "cpu"
 class YoloModel(LabelStudioMLBase):
     def __init__(self, project_id, **kwargs):
         super().__init__(**kwargs)
-        self.yolo_detector = YOLO("/models/apple_detector/apple_detector_v3.pt")
-        self.sam_detector = SAM("/models/segment_anything/sam_b.pt")
+        print("------- Check if yolo path exists ------")
+        print(Path("/models/best_v3.pt").exists())
+        print("------Check finished-----")
+
+        print("------- Check if sam path exists ------")
+        print(Path("/models/sam_b.pt").exists())
+        print("------Check finished-----")
+
+        self.yolo_detector = YOLO("/models/best_v3.pt")
+        self.sam_detector = SAM("/models/sam_b.pt")
 
         self.yolo_detector.to(DEVICE)
         self.sam_detector.to(DEVICE)
