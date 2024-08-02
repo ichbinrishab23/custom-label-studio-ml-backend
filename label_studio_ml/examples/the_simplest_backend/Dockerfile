@@ -9,7 +9,7 @@ COPY requirements.txt .
 
 ENV PYTHONUNBUFFERED=True \
     PORT=${PORT:-9090}
-
+    
 RUN pip install -r requirements.txt
 
 WORKDIR /app
